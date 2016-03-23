@@ -1,26 +1,11 @@
-# Important Notice
+# Bikeshed Template Repository
 
-! Anyone using the Travis configuration with versions of this prior to 2015-10-16
-should delete any Github account tokens used.  Travis logs might contain
-your token.
-
-# Internet Draft Template Repository
-
-The contents of this repository can be used to get started with a new internet
-draft.
+The contents of this repository can be used to get started with a new bikeshed
+document.
 
 ## Getting Started
 
 You need a [GitHub account](https://github.com/join).
-
-Make your you have the [necessary software installed](https://github.com/martinthomson/i-d-template/blob/master/doc/SETUP.md).
-
-### Working Group Setup
-
-Make a [new organization](https://github.com/organizations/new) for your working
-group.  This guide will use the name `unicorn-wg` for your working group.
-
-See the [more detailed guide](https://github.com/martinthomson/blob/master/doc/WG-SETUP.md).
 
 ### New Draft Setup
 
@@ -38,35 +23,14 @@ $ cd unicorn-protocol
 Clone a copy of this respository into place:
 
 ```sh
-$ git clone https://github.com/martinthomson/i-d-template lib
+$ git clone https://github.com/jcjones/bikeshed-template lib
 ```
 
 Alternatively, you can use `git submodule` to get a stable version.
 
-Choose whether you want to use markdown, outline, or xml as your input form.
-If you already have a draft, then that decision is already made for you.
-
-Make a draft file.  The name of the file is important, make it match the name of
-your draft.  You can take a copy of the [example](https://github.com/martinthomson/i-d-template/blob/master/example.md) [files](https://github.com/martinthomson/i-d-template/blob/master/example.xml) if you are starting from
-scratch.
-
-Edit the draft so that it has both a title and the correct name.  These tools
-uses the `-latest` suffix in place of the usual number ('-00', or '-08').  The
-number is generated automatically when you use `make submit`.
-
-In XML, you should have something like:
-```xml
-<rfc docName="draft-ietf-unicorn-protocol-latest"
-     ... other attributes ...>
-  <front>
-    <title abbrev="Unicorns!!!">The Unicorn Protocol</title>
-```
-
-Markdown is similar:
-```yaml
-docname: draft-ietf-unicorn-protocol-latest
-title: The Unicorn Protocol
-```
+Creation of the bikeshed input file is currently unspecified, making this much
+less slick than `[martinthomson/i-d-template](https://github.com/martinthomson/i-d-template)`.
+Anyway, it should be `index.src.html` (currently).
 
 Now, run the setup commands:
 ```sh
@@ -138,8 +102,3 @@ support files in this repository.  Just update the `lib/` directory with
 ```sh
 $ git -C lib pull origin master
 ```
-
-
-## Submitting Drafts
-
-See the [submission guide](https://github.com/martinthomson/i-d-template/blob/master/doc/SUBMITTING.md).

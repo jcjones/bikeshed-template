@@ -26,28 +26,13 @@ PUSH_GHPAGES := true
 endif
 endif
 
-index.html: $(drafts_html) $(drafts_txt)
-ifeq (1,$(words $(drafts)))
-	cp $< $@
-else
-	@echo '<!DOCTYPE html>' >$@
-	@echo '<html>' >>$@
-	@echo '<head><title>$(GITHUB_REPO) drafts</title></head>' >>$@
-	@echo '<body><ul>' >>$@
-	@for draft in $(drafts); do \
-	  echo '<li><a href="'"$${draft}"'.html">'"$${draft}"'</a> (<a href="'"$${draft}"'.txt">txt</a>)</li>' >>$@; \
-	done
-	@echo '</ul></body>' >>$@
-	@echo '</html>' >>$@
-endif
-
 .PHONY: ghpages
-ghpages: index.html $(drafts_html) $(drafts_txt)
+ghpages: index.html
 ifneq (true,$(CI))
 	@git show-ref refs/heads/gh-pages >/dev/null 2>&1 || \
 	  (git show-ref refs/remotes/origin/gh-pages >/dev/null 2>&1 && \
 	    git branch -t gh-pages origin/gh-pages) || \
-	  ! echo 'Error: No gh-pages branch, run `make setup-ghpages` to initialize it.'
+	  ! echo 'Error: No gh-pages branch, run `make -f lib/setup.mk` to initialize it.'
 endif
 ifeq (true,$(PUSH_GHPAGES))
 	mkdir $(GHPAGES_TMP)
